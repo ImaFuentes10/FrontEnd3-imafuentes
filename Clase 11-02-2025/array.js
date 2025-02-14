@@ -12,3 +12,11 @@ console.log("Ùltima fruta usado length: ", frutas [frutas.length -1]); //'fruta
 //Ejemplo 3: Modificar un elemento del arreglo
 frutas[4] = "Guayaba"
 console.log("Frutas actualizadas", frutas);
+
+//Ejemplo push
+frutas.push("Plátano")
+console.log("frutas.push", frutas)
+
+//Ejemplo unshift
+frutas.unshift("Sandía")
+console.log("frutas.unshift", frutas)
