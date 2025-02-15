@@ -3,7 +3,7 @@
 This is a repository created for uploading all the practices and exercises from the 3rd module from the DEV.F Web Development Master. 
 The focus is to learn the basic aspects of JavaScript from scratch,
 
-* Website can be accessed through the following Github Pages link: https://imafuentes10.github.io/FrontEnd1-imafuentes/
+* Website can be accessed through the following Github Pages link: https://imafuentes10.github.io/FrontEnd3-imafuentes/
 
 ## 📜 Project structure
 
@@ -23,6 +23,6 @@ The focus is to learn the basic aspects of JavaScript from scratch,
 ### 💻 Install
 
 1. Clone repository:
-        git clone https://github.com/ImaFuentes10/FrontEnd1-imafuentes.git
+        git clone https://github.com/ImaFuentes10/FrontEnd3-imafuentes.git
 
 2. Open 'index.html' in a browser
