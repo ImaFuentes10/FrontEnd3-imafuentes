@@ -53,7 +53,7 @@ Primer atributo: Nombre del evento que teine que escuchar (click, submit, etc.)
 Segundo atributo: Función que se va a ejecutar cuando se escuche el evento
 */
 formulario.addEventListener("submit", function(event){
-    event.preventDefault() //Prevenir el envío de formulario, que hae que se refresque la página
+    event.preventDefault() //Prevenir el envío de formulario, que hace que se refresque la página
     console.log(event);
 
     //Obtener los valores del formulario

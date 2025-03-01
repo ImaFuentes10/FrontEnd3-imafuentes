@@ -12,15 +12,34 @@
     </header>
     <main>
         <!-- Ejercicio 1: Cambiar contenido con un botón -->
-        <h2 id="titulo-cambio">¡Bienvenido a mi página!</h2>
-        <p id="parrafo-cambio">Este es el contenido inicial</p>
-        <button id="boton-cambio">Cambiar</button>
+        <section aria-labelledby="cambio-contenido">
+            <h2 id="titulo-cambio">¡Bienvenido a mi página!</h2>
+            <p id="parrafo-cambio">Este es el contenido inicial</p>
+            <button class='boton-normal' id="boton-cambio">Cambiar</button>
+        </section>
 
         <!-- Ejercicio 2: Mostrar u ocultar contenido -->
-        <div>
+        <section aria-labelledby="mostrar-ocultar-contenido">
             <p id="parrafo-mostrar">Ahora se muestra el contenido</p>
-            <button id="boton-mostrar">Mostrar contenido</button>
-        </div>
+            <button class="boton-normal" id="boton-mostrar">Mostrar contenido</button>
+        </section>
+
+        <!-- Problema: Caja de comentarios -->
+         <section aria-labelledby="caja-comentarios" class="formulario">
+            <h1>Caja de Comentarios</h1>
+            <form id="comentarios-form">
+                <label for="comentario" id="comentarios-label">Déjanos un comentario:</label>
+                <textarea id="comentarios-area" rows="5" placeholder="Escribe aquí tus comentarios..."></textarea>
+
+                <button type="submit" id="enviar-comentario" class="boton-normal">Enviar</button>
+            </form>
+         </section>
+
+         <section aria-labelledby="comentarios" id="lista-comentarios">
+            <h2>Comentarios de clientes</h2>
+            <ul id="comentarios-clientes"></ul>
+            <button class="boton-normal" id="boton-eliminar-todo">Limpiar</button>
+         </section>
     </main>
     <footer>
         <p>&copy; 2025 Imanol Fuentes</p>
