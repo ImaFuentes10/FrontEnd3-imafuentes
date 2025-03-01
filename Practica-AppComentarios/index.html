@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica - Introducción al DOM en JavaScript</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <header>
+        <h1>Práctica - Introducción al DOM en JavaScript</h1>
+    </header>
+    <main>
+        <!-- Ejercicio 1: Cambiar contenido con un botón -->
+        <section aria-labelledby="cambio-contenido">
+            <h2 id="titulo-cambio">¡Bienvenido a mi página!</h2>
+            <p id="parrafo-cambio">Este es el contenido inicial</p>
+            <button class='boton-normal' id="boton-cambio">Cambiar</button>
+        </section>
+
+        <!-- Ejercicio 2: Mostrar u ocultar contenido -->
+        <section aria-labelledby="mostrar-ocultar-contenido">
+            <p id="parrafo-mostrar">Ahora se muestra el contenido</p>
+            <button class="boton-normal" id="boton-mostrar">Mostrar contenido</button>
+        </section>
+
+        <!-- Problema: Caja de comentarios -->
+         <section aria-labelledby="caja-comentarios" class="formulario">
+            <h1>Caja de Comentarios</h1>
+            <form id="comentarios-form">
+                <label for="comentario" id="comentarios-label">Déjanos un comentario:</label>
+                <textarea id="comentarios-area" rows="5" placeholder="Escribe aquí tus comentarios..."></textarea>
+
+                <button type="submit" id="enviar-comentario" class="boton-normal">Enviar</button>
+            </form>
+         </section>
+
+         <section aria-labelledby="comentarios" id="lista-comentarios">
+            <h2>Comentarios de clientes</h2>
+            <ul id="comentarios-clientes"></ul>
+            <button class="boton-normal" id="boton-eliminar-todo">Limpiar</button>
+         </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Imanol Fuentes</p>
+    </footer>
+    <script src="./script.js"></script>
+</body>
+</html>

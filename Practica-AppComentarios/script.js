@@ -1,38 +1,3 @@
-//Práctica - Introducción al DOM en JavaScript
-
-//Ejercicio 1: Cambiar contenido con un botón
-let tituloCambio = document.getElementById('titulo-cambio')
-let parrafoCambio = document.getElementById('parrafo-cambio')
-let botonCambio = document.getElementById('boton-cambio')
-
-botonCambio.addEventListener('click', ()=>{
-
-    if (tituloCambio.innerHTML == '¡Contenido actualizado!'){
-        tituloCambio.innerHTML = '¡Bienvenido a mi página!';
-        parrafoCambio.innerHTML = 'Este es el contenido inicial';
-    }else{
-        tituloCambio.innerHTML = '¡Contenido actualizado!';
-        parrafoCambio.innerHTML = 'El contenido ha sido cambiado';
-    }
-})
-
-
-//Ejercicio 2: Mostrar u ocultar contenido
-let botonMostrar = document.getElementById('boton-mostrar')
-let parrafoMostrar = document.getElementById('parrafo-mostrar')
-
-botonMostrar.addEventListener('click', ()=>{
-
-    if(botonMostrar.textContent == 'Ocultar contenido'){
-        botonMostrar.textContent = 'Mostrar contenido';
-        parrafoMostrar.style.display = 'none';
-    }else{
-        botonMostrar.textContent = 'Ocultar contenido';
-        parrafoMostrar.style.display = 'block';
-    }
-})
-
-
 //Problema: Caja de comentarios
 class Comentario {
     constructor(comentario) {
@@ -56,10 +21,15 @@ formulario.addEventListener('submit', function(event){
     event.preventDefault()
     //console.log(event) //Prueba de impresión para ver que se imprima el evento
 
+    //Creo variable de fecha
+    let fecha = new Date()
+    console.log (fecha);
+
     const comentario = document.getElementById("comentarios-area").value
     const divComentario = document.createElement('div') //Creamos div para contener a 'li' y 'button'
     const item = document.createElement('li')
     const botonEliminar = document.createElement('button')
+    const textoFecha = document.createElement('p')
 
     let nuevoComentario = new Comentario(comentario)
     //console.log(nuevoComentario); //Prueba de impresión para ver que se imrpime el texto
@@ -69,6 +39,8 @@ formulario.addEventListener('submit', function(event){
     comentariosClientes.appendChild(divComentario)
     //Creamos 'li'(item) y 'button'(botonEliminar) dentro del 'div'(divComentario) anterior para poder dar estilo a comentario con boton
     divComentario.appendChild(item)
+    textoFecha.textContent = fecha;
+    divComentario.appendChild(textoFecha)
     divComentario.appendChild(botonEliminar)   
 
     formulario.reset()
@@ -90,4 +62,3 @@ Supongo que es porque estos nuevos hijos que remuevo no son hijos del originalme
 */
 
 })
-
