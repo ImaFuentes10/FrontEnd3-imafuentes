@@ -48,16 +48,13 @@ h2{
     padding: 0 0 1rem 0;
 }
 
-p{
-    padding: 0 0 1rem 0;
-}
-
 .boton-normal{
     background-color: var(--color-boton);
     border-color: var(--color-borde);
     border-radius: 0.5rem;
     margin: 0 0 1rem 0;
     padding: 0.5rem;
+    font-weight: bold;
 }
 
 .boton-normal:hover{
@@ -82,11 +79,16 @@ p{
 
 label{
     padding: 0 0 1rem 0;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 textarea{
     margin: 0 0 1rem 0;
-    width: 20%
+    width: 20%;
+    border: 0.2rem solid var(--color-borde);
+    border-radius: 1rem;
+    padding: 0.5rem;
 }
 
 #comentarios-clientes{
@@ -102,11 +104,11 @@ textarea{
     justify-content: space-between;
     align-items: center;
     border-style: solid;
-    border-color: var(--color-primario);
-    border-width: 0.1rem;
+    border-color: var(--color-borde);
+    border-width: 0.2rem;
     border-radius: 0.5rem;
     width: 40%;
-    margin-bottom: 1rem;
+    margin-bottom: 0.3rem;
 }
 
 #comentarios-clientes li{
@@ -123,8 +125,7 @@ textarea{
     margin: 0;
     padding: 0.5rem 0;
     width: 1.5rem;
-    border-left-style: solid;
-    border-left-color: var(--color-primario);
+    border-left: 0.2rem solid var(--color-borde);
     border-right: none;
     border-top: none;
     border-bottom: none;
@@ -133,4 +134,10 @@ textarea{
 
 #comentarios-clientes div button:hover{
     cursor: pointer; 
+ }
+
+ #comentarios-clientes p{
+    margin: 0;
+    font-size: 0.8rem;
+    padding: 0 0 1rem 0;
  }

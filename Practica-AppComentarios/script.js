@@ -23,7 +23,7 @@ formulario.addEventListener('submit', function(event){
 
     //Creo variable de fecha
     let fecha = new Date()
-    console.log (fecha);
+    //console.log (fecha); //Imprimimos fecha como prueba
 
     const comentario = document.getElementById("comentarios-area").value
     const divComentario = document.createElement('div') //Creamos div para contener a 'li' y 'button'
@@ -39,9 +39,9 @@ formulario.addEventListener('submit', function(event){
     comentariosClientes.appendChild(divComentario)
     //Creamos 'li'(item) y 'button'(botonEliminar) dentro del 'div'(divComentario) anterior para poder dar estilo a comentario con boton
     divComentario.appendChild(item)
+    divComentario.appendChild(botonEliminar) 
     textoFecha.textContent = fecha;
-    divComentario.appendChild(textoFecha)
-    divComentario.appendChild(botonEliminar)   
+    comentariosClientes.appendChild(textoFecha)  
 
     formulario.reset()
 
@@ -49,11 +49,13 @@ formulario.addEventListener('submit', function(event){
 botonEliminar.addEventListener('click', function(event){
     //console.log(event); // Prueba de impresión para ver que se registra el evento
     comentariosClientes.removeChild(divComentario) //Quitamos divComentario
+    comentariosClientes.removeChild(textoFecha)
 })
 
 //Boton Limpiar para quitar todos los comentarios
 botonEliminarTodo.addEventListener('click',()=>{
     comentariosClientes.removeChild(divComentario)
+    comentariosClientes.removeChild(textoFecha)
 })
 /*Al hace esta acción 2 veces me sale el siguiente error:
 Uncaught DOMException: Node.removeChild: The node to be removed is not a child of this node
