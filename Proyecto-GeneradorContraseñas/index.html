@@ -7,57 +7,37 @@
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <header>
+    <div class="container">
         <h1>Generador de Contraseñas</h1>
-    </header>
-    <main>
-        
-        <section>
-            <form>
-                <div class="contraseña-output">
-                    <h2 id="contraseña"></h2>
-            <!-- aquí va ícono de copiar al portapapeles -->
-                </div>
+        <h2 class="contraseña-output">contraseña <a href=""><img src="" alt="">copiar</a></h2>
+        <form class="form">
+            <label for="numeroLongitudCaracteres">Caracteres de longitud</label>
+            <div class="longitud-caracteres-contenedor">
+                <input type="range" min="4" max="20" value="8" class="slider-longitud" id="rangoLongitudCaracteres">
+                <input type="number" min="4" max="20" value="8" class="numero-longitud" id="numeroLongitudCaracteres">
+            </div>
 
-                <div>
-                    <label for="longitud">Caracteres de longitud</label>
-                    <output type="number"></output>
-                </div>
+            <label for="minusculas">Incluir Minúsculas</label>
+            <input type="checkbox" id="incluirMinusculas">
+            
+            <label for="mayusculas">Incluir Mayúsculas</label>
+            <input type="checkbox" id="incluirMayusculas">
+            
+            <label for="numeros">Incluir Números</label>
+            <input type="checkbox" id="incluirNumeros">
+            
+            <label for="simbolos">Incluir Símbolos</label>
+            <input type="checkbox" id="incluirSimbolos">
 
-                <div>
-                    <input type="range" min="4" max="20" value="8" class="slider" id="rango-longitud">
-                </div>
+            <div class="contenedor-seguridad">
+                <h3>Seguridad</h3>
+                <p id="nivel-seguridad"></p>
+            <!-- Aquí van 4 barras de seguridad de contraseña -->
+            </div>
 
-                <div class="checkbox">
-                    <input type="checkbox">
-                    <label for="mayusculas">Incluir Mayúsculas</label>
-                </div>
-
-                <div class="checkbox">
-                    <input type="checkbox">
-                    <label for="minusculas">Incluir Minúsculas</label>
-                </div>
-
-                <div class="checkbox">
-                    <input type="checkbox">
-                    <label for="numeros">Incluir Números</label>
-                </div>
-
-                <div class="checkbox">
-                    <input type="checkbox">
-                    <label for="simbolos">Incluir Símbolos</label>
-                </div>
-
-                <div class="nivel-seguridad">
-                    <h3>Seguridad</h3>
-                    <p id="nivel-seguridad"></p>
-                    <!-- Aquí van 4 barras de seguridad de contraseña -->
-                </div>
-
-                <button type="submit">GENERAR</button>
-            </form>
-        </section>
-    </main>
+            <button type="submit" class="boton-generar">GENERAR</button>
+        </form>
+    </div>
     <footer>
         <p>&copy; 2025 Imanol Fuentes</p>
     </footer>
