@@ -10,7 +10,7 @@
     <div class="container">
         <h1>Generador de Contraseñas</h1>
         <h2 class="contraseña-output">contraseña <a href=""><img src="" alt="">copiar</a></h2>
-        <form class="form">
+        <form class="form" id="generadorContraseñas">
             <label for="numeroLongitudCaracteres">Caracteres de longitud</label>
             <div class="longitud-caracteres-contenedor">
                 <input type="range" min="4" max="20" value="8" class="slider-longitud" id="rangoLongitudCaracteres">
@@ -18,16 +18,16 @@
             </div>
 
             <label for="minusculas">Incluir Minúsculas</label>
-            <input type="checkbox" id="incluirMinusculas">
+            <input type="checkbox" checked id="incluirMinusculas">
             
             <label for="mayusculas">Incluir Mayúsculas</label>
-            <input type="checkbox" id="incluirMayusculas">
+            <input type="checkbox" unchecked id="incluirMayusculas">
             
             <label for="numeros">Incluir Números</label>
-            <input type="checkbox" id="incluirNumeros">
+            <input type="checkbox" unchecked id="incluirNumeros">
             
             <label for="simbolos">Incluir Símbolos</label>
-            <input type="checkbox" id="incluirSimbolos">
+            <input type="checkbox" unchecked id="incluirSimbolos">
 
             <div class="contenedor-seguridad">
                 <h3>Seguridad</h3>
