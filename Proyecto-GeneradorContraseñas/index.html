@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1>Generador de Contraseñas</h1>
-        <h2 class="contraseña-output">contraseña <a href=""><img src="" alt="">copiar</a></h2>
+        <h2 class="contraseña-output" id="contraseñaOutput">contraseña</h2>
         <form class="form" id="generadorContraseñas">
             <label for="numeroLongitudCaracteres">Caracteres de longitud</label>
             <div class="longitud-caracteres-contenedor">
@@ -28,12 +28,6 @@
             
             <label for="simbolos">Incluir Símbolos</label>
             <input type="checkbox" unchecked id="incluirSimbolos">
-
-            <div class="contenedor-seguridad">
-                <h3>Seguridad</h3>
-                <p id="nivel-seguridad"></p>
-            <!-- Aquí van 4 barras de seguridad de contraseña -->
-            </div>
 
             <button type="submit" class="boton-generar">GENERAR</button>
         </form>
