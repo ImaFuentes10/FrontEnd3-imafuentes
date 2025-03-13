@@ -124,12 +124,46 @@ function generarContraseña(longitudCaracteres, incluirMinusculas, incluirMayusc
 
     //declaramos una variable que tiene un arreglo que contendrá a los caracteres seleccionados
     const caracteresContraseña = [];
-    //ciclo que nos arroja un lugar aleatorio en el arreglo por cada iteración, el cual se repite = longitud deseada
-    for (let i = 0; i < longitudCaracteres; i++){
+
+    //Decisiones para asegurarnos de que haya al menos un caracter del tipo seleccionado
+    if (incluirMinusculas) {
+        const caracterASCII = MINUS_CHAR_CODES[Math.floor(Math.random() * MINUS_CHAR_CODES.length)];
+        caracteresContraseña.push(String.fromCharCode(caracterASCII));
+    }
+    if (incluirMayusculas) {
+        const caracterASCII = MAYUS_CHAR_CODES[Math.floor(Math.random() * MAYUS_CHAR_CODES.length)];
+        caracteresContraseña.push(String.fromCharCode(caracterASCII));
+    }
+    if (incluirNumeros) {
+        const caracterASCII = NUM_CHAR_CODES[Math.floor(Math.random() * NUM_CHAR_CODES.length)];
+        caracteresContraseña.push(String.fromCharCode(caracterASCII));
+    }
+    if (incluirSimbolos) {
+        const caracterASCII = SIM_CHAR_CODES[Math.floor(Math.random() * SIM_CHAR_CODES.length)];
+        caracteresContraseña.push(String.fromCharCode(caracterASCII));
+    }
+
+    //ciclo que nos arroja un lugar aleatorio en el arreglo por cada iteración
+    //el cual se repite hasta la longitud deseada, partiendo de la cantidad de caracteres que hayamos añadido antes
+    for (let i = caracteresContraseña.length; i < longitudCaracteres; i++){
         const caracterASCII = codigoCaracteres[Math.floor(Math.random() * codigoCaracteres.length)]
         //console.log(caracterASCII); //prueba de impresión de cada caracter seleccionado
         caracteresContraseña.push(String.fromCharCode(caracterASCII)); //añadimos el caracter al arreglo pero ya convertido de ASCII a string
     }
+
+    // Mezclamos los caracteres para que la contraseña sea más aleatoria
+    /*
+    Algoritmo de Fisher-Yates (o Knuth) para mezclar el arreglo
+    En cada iteración se va a seleccionar uno de los elementos del arreglo,
+    empezando por el ùltimo y de forma descendente (i = caracteresContraseña.length - 1)
+    También se seleccionará un elemento al azar entre el 0 y el elemento que sea i en ese momento (j)
+    Finalmente, estos se cambiaràn de posición, mezclando el arreglo
+    */
+    for (let i = caracteresContraseña.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [caracteresContraseña[i], caracteresContraseña[j]] = [caracteresContraseña[j], caracteresContraseña[i]];
+    }
+
     console.log(caracteresContraseña); //prueba impresión de los caracteres que conforman la contraseña
     return caracteresContraseña.join(''); //recuperamos el arreglo generado y lo juntamos en un string
 }
