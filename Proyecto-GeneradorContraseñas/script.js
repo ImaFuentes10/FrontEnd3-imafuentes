@@ -28,9 +28,28 @@ const SIM_CHAR_CODES = arrayAscendente(33,47).concat(
     arrayAscendente(123,126)
 )
 
+//Función para generar arreglos con un rango de numeración ASCII determinada
+function arrayAscendente(low, high) {
+    const arregloASCII = []
+    for (i=low; i <=high; i++) {
+        arregloASCII.push(i)
+    }
+    return arregloASCII
+    //recorre de menor a mayor todo un rango de números previamente delimitados y va añadiendo cada uno al array
+    //luego regresa el arreglo con todos estos números, que en este caso cada uno representa una letra en código ASCII
+}
+
 //Escucho cuando se hace input en cualquiera de estos dos elementos
 numeroLongitudCaracteres.addEventListener('input',sincronizarLongitudCaracteres)
 rangoLongitudCaracteres.addEventListener('input', sincronizarLongitudCaracteres)
+
+//Funciòn para sincronizar la longitud
+function sincronizarLongitudCaracteres(e){
+    const valor = e.target.value //creo const valor que toma su valor cada que sucede un input en alguno de los dos elementos
+    //Doy el mismo valor a cada elemento igual al valor que acaba de tomar en el evento
+    numeroLongitudCaracteres.value = valor
+    rangoLongitudCaracteres.value = valor
+}
 
 //al someter form se generarà la contraseña
 form.addEventListener('submit', e => {
@@ -45,233 +64,76 @@ form.addEventListener('submit', e => {
 
     //variable de la constraseña tras ser generada
     const contraseña = generarContraseña(longitudCaracteres, incluirMinusculas, incluirMayusculas, incluirNumeros, incluirSimbolos)
-
+   
+    //cambiamos el texto del html por la contraseña generada
     contraseñaOutput.innerText = contraseña
 })
 
 //función para generar la contraseña, toma en cuenta varios elementos ya obtenidos antes
 function generarContraseña(longitudCaracteres, incluirMinusculas, incluirMayusculas, incluirNumeros, incluirSimbolos){
-    //console.log(MINUS_CHAR_CODES) //Prueba de que se imprime uno de los arreglos
-
+    //definimos variable para el arreglo de caracteres a crearse dependiendo de los elementos seleccionados
     let codigoCaracteres = []
-    const caracteresContraseña = []
-
-    /* //Intento de funciòn fallida, da el array pero con puros valores undefined
-    function crearContraseña(){
-        for (let i = 0; i < longitudCaracteres; i++){
-            const caracterASCII = codigoCaracteres[Math.floor(Math.random() * codigoCaracteres.length)]
-            console.log(caracterASCII);
-            caracteresContraseña.push(caracterASCII)
-        }
-        console.log(caracteresContraseña);
-    }
-    */
-
     //decisiones para cada posibilidad de selecciòn de elementos
     if(incluirMinusculas && (!incluirMayusculas && !incluirNumeros && !incluirSimbolos)){
-        let codigoCaracteres = MINUS_CHAR_CODES
-        console.log(codigoCaracteres);
-        //crearContraseña(); //llamo a funciòn que sigue fallando
-
-        for (let i = 0; i < longitudCaracteres; i++){
-            const caracterASCII = codigoCaracteres[Math.floor(Math.random() * codigoCaracteres.length)]
-            console.log(caracterASCII);
-            caracteresContraseña.push(String.fromCharCode(caracterASCII))
-        }
-        console.log(caracteresContraseña);
-        return caracteresContraseña.join('')
+        codigoCaracteres = MINUS_CHAR_CODES
     }
     if(incluirMayusculas && (!incluirMinusculas && !incluirNumeros && !incluirSimbolos)){
-        let codigoCaracteres = MAYUS_CHAR_CODES
-        console.log(codigoCaracteres);
-
-        for (let i = 0; i < longitudCaracteres; i++){
-            const caracterASCII = codigoCaracteres[Math.floor(Math.random() * codigoCaracteres.length)]
-            caracteresContraseña.push(String.fromCharCode(caracterASCII))
-        }
-        return caracteresContraseña.join('')
+        codigoCaracteres = MAYUS_CHAR_CODES
     }
     if(incluirNumeros && (!incluirMinusculas && !incluirMayusculas && !incluirSimbolos)){
-        let codigoCaracteres = NUM_CHAR_CODES
-        console.log(codigoCaracteres);
-
-        for (let i = 0; i < longitudCaracteres; i++){
-            const caracterASCII = codigoCaracteres[Math.floor(Math.random() * codigoCaracteres.length)]
-            caracteresContraseña.push(String.fromCharCode(caracterASCII))
-        }
-        return caracteresContraseña.join('')
+        codigoCaracteres = NUM_CHAR_CODES
     }
     if(incluirSimbolos && (!incluirMinusculas && !incluirMayusculas && !incluirNumeros)){
-        let codigoCaracteres = SIM_CHAR_CODES
-        console.log(codigoCaracteres);
-
-        for (let i = 0; i < longitudCaracteres; i++){
-            const caracterASCII = codigoCaracteres[Math.floor(Math.random() * codigoCaracteres.length)]
-            caracteresContraseña.push(String.fromCharCode(caracterASCII))
-        }
-        return caracteresContraseña.join('')
+        codigoCaracteres = SIM_CHAR_CODES
     }
     if(incluirMinusculas && incluirMayusculas && (!incluirNumeros && !incluirSimbolos)){
-        let codigoCaracteres = MINUS_CHAR_CODES
-        codigoCaracteres = codigoCaracteres.concat(MAYUS_CHAR_CODES)
-        console.log(codigoCaracteres);
-
-        for (let i = 0; i < longitudCaracteres; i++){
-            const caracterASCII = codigoCaracteres[Math.floor(Math.random() * codigoCaracteres.length)]
-            caracteresContraseña.push(String.fromCharCode(caracterASCII))
-        }
-        return caracteresContraseña.join('')
+        codigoCaracteres = MINUS_CHAR_CODES.concat(MAYUS_CHAR_CODES)
     }
     if(incluirMinusculas && incluirNumeros && (!incluirMayusculas && !incluirSimbolos)){
-        let codigoCaracteres = MINUS_CHAR_CODES
-        codigoCaracteres = codigoCaracteres.concat(NUM_CHAR_CODES)
-        console.log(codigoCaracteres);
-
-        for (let i = 0; i < longitudCaracteres; i++){
-            const caracterASCII = codigoCaracteres[Math.floor(Math.random() * codigoCaracteres.length)]
-            caracteresContraseña.push(String.fromCharCode(caracterASCII))
-        }
-        return caracteresContraseña.join('')
+        codigoCaracteres = MINUS_CHAR_CODES.concat(NUM_CHAR_CODES)
     }
     if(incluirMinusculas && incluirSimbolos && (!incluirMayusculas && !incluirNumeros)){
-        let codigoCaracteres = MINUS_CHAR_CODES
-        codigoCaracteres = codigoCaracteres.concat(SIM_CHAR_CODES)
-        console.log(codigoCaracteres);
-
-        for (let i = 0; i < longitudCaracteres; i++){
-            const caracterASCII = codigoCaracteres[Math.floor(Math.random() * codigoCaracteres.length)]
-            caracteresContraseña.push(String.fromCharCode(caracterASCII))
-        }
-        return caracteresContraseña.join('')
+        codigoCaracteres = MINUS_CHAR_CODES.concat(SIM_CHAR_CODES)
     }
     if(incluirMayusculas && incluirNumeros && (!incluirMinusculas && !incluirSimbolos)){
-        let codigoCaracteres = MAYUS_CHAR_CODES
-        codigoCaracteres = codigoCaracteres.concat(NUM_CHAR_CODES)
-        console.log(codigoCaracteres);
-
-        for (let i = 0; i < longitudCaracteres; i++){
-            const caracterASCII = codigoCaracteres[Math.floor(Math.random() * codigoCaracteres.length)]
-            caracteresContraseña.push(String.fromCharCode(caracterASCII))
-        }
-        return caracteresContraseña.join('')
+        codigoCaracteres = MAYUS_CHAR_CODES.concat(NUM_CHAR_CODES)
     }
     if(incluirMayusculas && incluirSimbolos && (!incluirMinusculas && !incluirNumeros)){
-        let codigoCaracteres = MAYUS_CHAR_CODES
-        codigoCaracteres = codigoCaracteres.concat(SIM_CHAR_CODES)
-        console.log(codigoCaracteres);
-
-        for (let i = 0; i < longitudCaracteres; i++){
-            const caracterASCII = codigoCaracteres[Math.floor(Math.random() * codigoCaracteres.length)]
-            caracteresContraseña.push(String.fromCharCode(caracterASCII))
-        }
-        return caracteresContraseña.join('')
+        codigoCaracteres = MAYUS_CHAR_CODES.concat(SIM_CHAR_CODES)
     }
     if(incluirNumeros && incluirSimbolos && (!incluirMinusculas && !incluirMayusculas)){
-        let codigoCaracteres = NUM_CHAR_CODES
-        codigoCaracteres = codigoCaracteres.concat(SIM_CHAR_CODES)
-        console.log(codigoCaracteres);
-
-        for (let i = 0; i < longitudCaracteres; i++){
-            const caracterASCII = codigoCaracteres[Math.floor(Math.random() * codigoCaracteres.length)]
-            caracteresContraseña.push(String.fromCharCode(caracterASCII))
-        }
-        return caracteresContraseña.join('')
+        codigoCaracteres = NUM_CHAR_CODES.concat(SIM_CHAR_CODES)
     }
     if(incluirMinusculas && incluirMayusculas && incluirNumeros && !incluirSimbolos){
-        let codigoCaracteres = MINUS_CHAR_CODES
-        codigoCaracteres = codigoCaracteres.concat(
-            MAYUS_CHAR_CODES
-        ).concat(
-            NUM_CHAR_CODES
-        )
-        console.log(codigoCaracteres);
-
-        for (let i = 0; i < longitudCaracteres; i++){
-            const caracterASCII = codigoCaracteres[Math.floor(Math.random() * codigoCaracteres.length)]
-            caracteresContraseña.push(String.fromCharCode(caracterASCII))
-        }
-        return caracteresContraseña.join('')
+        codigoCaracteres = MINUS_CHAR_CODES.concat(MAYUS_CHAR_CODES).concat(NUM_CHAR_CODES)
     }
     if(incluirMinusculas && incluirMayusculas && incluirSimbolos && !incluirNumeros){
-        let codigoCaracteres = MINUS_CHAR_CODES
-        codigoCaracteres = codigoCaracteres.concat(
-            MAYUS_CHAR_CODES
-        ).concat(
-            SIM_CHAR_CODES
-        )
-        console.log(codigoCaracteres);
-
-        for (let i = 0; i < longitudCaracteres; i++){
-            const caracterASCII = codigoCaracteres[Math.floor(Math.random() * codigoCaracteres.length)]
-            caracteresContraseña.push(String.fromCharCode(caracterASCII))
-        }
-        return caracteresContraseña.join('')
+        codigoCaracteres = MINUS_CHAR_CODES.concat(MAYUS_CHAR_CODES).concat(SIM_CHAR_CODES)
     }
     if(incluirMinusculas && incluirNumeros && incluirSimbolos && !incluirMayusculas){
-        let codigoCaracteres = MINUS_CHAR_CODES
-        codigoCaracteres = codigoCaracteres.concat(
-            MAYUS_CHAR_CODES
-        ).concat(
-            SIM_CHAR_CODES
-        )
-        console.log(codigoCaracteres);
-
-        for (let i = 0; i < longitudCaracteres; i++){
-            const caracterASCII = codigoCaracteres[Math.floor(Math.random() * codigoCaracteres.length)]
-            caracteresContraseña.push(String.fromCharCode(caracterASCII))
-        }
-        return caracteresContraseña.join('')
+        codigoCaracteres = MINUS_CHAR_CODES.concat(MAYUS_CHAR_CODES).concat(SIM_CHAR_CODES)
     }
     if(incluirMayusculas && incluirNumeros && incluirSimbolos && !incluirMinusculas){
-        let codigoCaracteres = MAYUS_CHAR_CODES
-        codigoCaracteres = codigoCaracteres.concat(
-            NUM_CHAR_CODES
-        ).concat(
-            SIM_CHAR_CODES
-        )
-        console.log(codigoCaracteres);
-
-        for (let i = 0; i < longitudCaracteres; i++){
-            const caracterASCII = codigoCaracteres[Math.floor(Math.random() * codigoCaracteres.length)]
-            caracteresContraseña.push(String.fromCharCode(caracterASCII))
-        }
-        return caracteresContraseña.join('')
+        codigoCaracteres = MAYUS_CHAR_CODES.concat(NUM_CHAR_CODES).concat(SIM_CHAR_CODES)
     }
     if(incluirMinusculas && incluirMayusculas && incluirNumeros && incluirSimbolos){
-        let codigoCaracteres = MINUS_CHAR_CODES
-        codigoCaracteres = codigoCaracteres.concat(
-            MAYUS_CHAR_CODES
-        ).concat(
-            NUM_CHAR_CODES
-        ).concat(
-            SIM_CHAR_CODES
-        )
-        console.log(codigoCaracteres);
-
-        for (let i = 0; i < longitudCaracteres; i++){
-            const caracterASCII = codigoCaracteres[Math.floor(Math.random() * codigoCaracteres.length)]
-            caracteresContraseña.push(String.fromCharCode(caracterASCII))
-        }
-        return caracteresContraseña.join('')
+        codigoCaracteres = MINUS_CHAR_CODES.concat(MAYUS_CHAR_CODES).concat(NUM_CHAR_CODES).concat(SIM_CHAR_CODES)
     }
-}
 
-//Función para generar arreglos con un rango de numeración ASCII determinada
-function arrayAscendente(low, high) {
-    const arregloASCII = []
-    for (i=low; i <=high; i++) {
-        arregloASCII.push(i)
+    //console.log(codigoCaracteres); //prueba impresión código ASCII de los caracteres que conformaràn la contraseña
+
+    //declaramos una variable que tiene un arreglo que contendrá a los caracteres seleccionados
+    const caracteresContraseña = [];
+    //ciclo que nos arroja un lugar aleatorio en el arreglo por cada iteración, el cual se repite = longitud deseada
+    for (let i = 0; i < longitudCaracteres; i++){
+        const caracterASCII = codigoCaracteres[Math.floor(Math.random() * codigoCaracteres.length)]
+        //console.log(caracterASCII); //prueba de impresión de cada caracter seleccionado
+        caracteresContraseña.push(String.fromCharCode(caracterASCII)); //añadimos el caracter al arreglo pero ya convertido de ASCII a string
     }
-    return arregloASCII
-    //recorre de menor a mayor todo un rango de números previamente delimitados y va añadiendo cada uno al array
-    //luego regresa el arreglo con todos estos números, que en este caso cada uno representa una letra en código ASCII
+    console.log(caracteresContraseña); //prueba impresión de los caracteres que conforman la contraseña
+    return caracteresContraseña.join(''); //recuperamos el arreglo generado y lo juntamos en un string
 }
 
-//Funciòn para sincronizar
-function sincronizarLongitudCaracteres(e){
-    const valor = e.target.value //creo const valor que toma su valor cada que sucede un input en alguno de los dos elementos
-    //Doy el mismo valor a cada elemento igual al valor que acaba de tomar en el evento
-    numeroLongitudCaracteres.value = valor
-    rangoLongitudCaracteres.value = valor
-}
+
+
 
