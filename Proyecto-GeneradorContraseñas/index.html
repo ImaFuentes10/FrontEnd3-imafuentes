@@ -8,15 +8,15 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
 </head>
 <body>
-    <div class="container">
+    <div class="container" aria-labelledby="generador-contraseñas">
         <h1>Generador de Contraseñas</h1>
-        <div class="contraseña-output">
+        <div class="contraseña-output" aria-labelledby="contraseña-generada">
             <h2 class="contraseña-output-text" id="contraseñaOutput">contraseña</h2>
             <button class="contraseña-output-button" id="boton-copiar" type="button" title="Copiar al portapapeles">
                 <span class="material-symbols-outlined">content_copy</span>
             </button>
         </div>
-        <form class="form" id="generadorContraseñas">
+        <form class="form" id="generadorContraseñas" aria-labelledby="elementos-contraseña">
             <label for="numeroLongitudCaracteres">Caracteres de longitud</label>
             <div class="longitud-caracteres-contenedor">
                 <input type="range" min="4" max="20" value="8" class="slider-longitud" id="rangoLongitudCaracteres">
@@ -34,6 +34,16 @@
             
             <label for="simbolos">Incluir Símbolos</label>
             <input type="checkbox" unchecked id="incluirSimbolos">
+
+            <div class="seguridad-container">
+                <p class="seguridad-text">Seguridad</p>
+                <div class="seguridad-cuadrado-container">
+                <div class="seguridad-cuadrado" id="seguridad-cuadrado-1"></div>
+                <div class="seguridad-cuadrado" id="seguridad-cuadrado-2"></div>
+                <div class="seguridad-cuadrado" id="seguridad-cuadrado-3"></div>
+                <div class="seguridad-cuadrado" id="seguridad-cuadrado-4"></div>
+            </div>
+            </div>
 
             <button type="submit" class="boton-generar">GENERAR</button>
         </form>
