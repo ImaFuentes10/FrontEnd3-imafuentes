@@ -168,6 +168,13 @@ function generarContraseña(longitudCaracteres, incluirMinusculas, incluirMayusc
     return caracteresContraseña.join(''); //recuperamos el arreglo generado y lo juntamos en un string
 }
 
+//Botón copiar al portapapeles
+//Obtengo evento click del boton de copiar al portapapeles y activo función
+document.getElementById('boton-copiar').addEventListener('click',copiarAlPortapapeles)
+//utilizo librería navigator para copiar al portapapeles el elemento HTML 'contraseñaOutpu', que es el elemento con el texto de la contraseña generada
+function copiarAlPortapapeles(e){
+    navigator.clipboard.writeText(contraseñaOutput.innerHTML)
+}
 
 
 

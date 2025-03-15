@@ -71,14 +71,35 @@ label{
 
 .contraseña-output{
     background-color: var(--color-fondo);
-    padding: 1rem;
     margin: 1rem 0 2rem 0;
     border: 0.2rem solid var(--color-borde);
     border-radius: 1rem;
     width: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+}
+
+.contraseña-output-text {
+    width: 90%;
+    margin: 0.5rem;
+}
+
+.contraseña-output-button {  
+    width: 2rem;
+    height: 2rem;
+    margin: 0.5rem 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+.contraseña-output-button:hover{
+    cursor: pointer;
+    transform: scale(1.2);
 }
 
 .boton-generar{
